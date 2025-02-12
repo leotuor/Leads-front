@@ -55,7 +55,6 @@
               <v-btn color="blue" block type="submit" @click="salvarComissao">
                 Salvar
               </v-btn>
-              <h2 class="text-center mt-16">Comissão salva com sucesso!</h2>
             </v-col>
           </v-row>
         </v-form>
