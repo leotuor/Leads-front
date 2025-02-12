@@ -155,7 +155,7 @@ export default {
       }
     },
     salvarComissao() {
-      if (this.vendedorSelecionado == null || this.vendasEfetuadas == (null || 0)) {
+      if (this.vendedorSelecionado == null || this.vendasEfetuadas == null) {
         return;
       }
       const vendedorIndex = this.vendedores.findIndex(v => v.id === this.vendedorSelecionado);
@@ -167,8 +167,8 @@ export default {
           valorComissao: this.valorComissaoDisplay
         });
       }
-
       localStorage.setItem("vendedores", JSON.stringify(this.vendedores));
+      alert("Dados salvos com sucesso!");
     },
   },
 };
