@@ -36,6 +36,7 @@
                 outlined
                 prefix="R$"
                 :rules="rule"
+                type="number"
                 v-model="vendasEfetuadas"
               ></v-text-field>
               <v-text-field
