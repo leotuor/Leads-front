@@ -16,7 +16,7 @@
       <v-col cols="10">
         <v-form @submit.prevent>
           <h2 class="text-center mt-5">
-            Selecione os anos e mêses
+            Selecione os anos e meses
           </h2>
           <v-combobox
             multiple
