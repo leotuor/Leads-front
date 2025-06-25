@@ -2,20 +2,18 @@
   <div class="background-color">
     <v-row>
       <v-col>
-        <v-card style="max-width: 500px; margin: auto; margin-bottom: 30vh; margin-top: 2vh;">
-          <h1 style="margin-left: 38%;">Trancity</h1>
-        </v-card>
-        <v-card elevation="10" style="max-width: 400px; margin: auto;">
+        <v-card elevation="10" style="max-width: 400px; margin: auto; margin-top: 20vh;">
           <div>
-            <h1 class="text-center">Bem-vindo ao Transporte Urbano</h1>
-            <p class="text-center">Acesse o sistema para gerenciar suas rotas e veículos.</p>
+            <h1 class="text-center">Bem-vindo ao Trancity</h1>
+            <p class="text-center">Interessado em nossos serviços?</p>
           </div>
           <v-img src="/Transporte-Urbano.jpg" cover>
             <v-form>
+                <v-text-field variant="solo" label="nome" required class="mb-3" v-model="nome"></v-text-field>
                 <v-text-field variant="solo" label="email" required class="mb-3" v-model="email"></v-text-field>
-                <v-text-field variant="solo" label="Senha" type="password" required class="mb-3" v-model="password"></v-text-field>
+                <v-text-field variant="solo" label="whatsapp" required class="mb-3" v-model="whatsapp"></v-text-field>
                 <div class="right-align">
-                  <v-btn color="success" class="mt-2" @click="login" style="margin-left: 38%;">Enviar</v-btn>
+                  <v-btn color="success" class="mt-2" @click="persistLead" style="margin-left: 38%; margin-bottom: 1vh;">Enviar</v-btn>
                 </div>
               </v-form>
           </v-img>
@@ -28,12 +26,37 @@
 export default {
   data: () => {
     return {
-      
+      nome: null,
+      email: null,
+      whatsapp: null
     }
   },
 
   methods: {
-    
+    async persistLead() {
+      try {
+        const response = await fetch('http://localhost:3333/leads/persist', { 
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            nome: this.nome,
+            email: this.email,
+            whatsapp: this.whatsapp,
+          }),
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert('Erro ao enviar, tente novamente mais tarde.');
+          return;
+        }
+        return data;
+      } catch (error) {
+        return error;
+      }
+    }
   },
 };
 </script>

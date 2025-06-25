@@ -1,9 +1,9 @@
 <template>
   <div class="login-background">
     <v-container>
-      <v-row justify="center">
-        <v-col cols="12" lg="3">
-          <v-card class="pa-4" max-width="500">
+      <v-row justify="center" align="center" class="fill-height">
+        <v-col cols="12" sm="8" md="6" lg="4">
+          <v-card class="pa-4 mx-auto" max-width="350px">
             <v-card-title class="text-h5 text-center">Login</v-card-title>
             <v-card-text>
               <v-form>
@@ -63,9 +63,9 @@ export default {
 .login-background {
   min-height: 100vh;
   background: linear-gradient(135deg, #47a1f5 0%, #bde0fa 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+.fill-height {
+  min-height: 100vh;
 }
 .right-align {
   display: flex;
